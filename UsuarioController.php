@@ -1,9 +1,9 @@
 <?php
 
- require_once 'model/UsuarioModel.php';
- require_once 'entities/Usuario.php';
+require_once "UsuarioModel.php";
 
- class UsuarioController{
+//Clase UsuarioController
+class UsuarioController{
 
     private $usuarioModel;
 

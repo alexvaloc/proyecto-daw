@@ -1,9 +1,8 @@
 <?php
 
-require_once "model/Conexion.php";
-require_once "controller/UsuarioController.php";
-require_once "entities/Usuario.php";
+require_once "Conexion.php";
 
+//Clase UsuarioModel
 class UsuarioModel{
     
     private $db;

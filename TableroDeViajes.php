@@ -1,5 +1,9 @@
 <?php
 
+require_once "Usuario.php";
+require_once "UsuarioController.php";
+require_once "UsuarioModel.php";
+
 // Verificar la sesión del usuario
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -19,10 +23,7 @@ $usuario = $_SESSION['usuario'];
 </head>
 <body>
     <h1>Tablero de Viajes</h1>
-    <h1>Bienvenido <?php echo $usuario->getNombre(); ?> a tu Tablero de Viajes en Mytra</h1>
-    
-    <!-- Mostrar información del usuario -->
-    <p>Correo electrónico: <?php echo $usuario->getEmail(); ?></p>
+    <h1>Bienvenido  a tu Tablero de Viajes en Mytra</h1>   
 
     <!-- Formulario para crear un viaje -->
     <h2>Crear un nuevo viaje</h2>
@@ -39,9 +40,9 @@ $usuario = $_SESSION['usuario'];
     <h2>Editar perfil</h2>
     <form method="POST" action="editar_perfil.php">
         <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" value="<?php echo $usuario->getNombre(); ?>" required><br><br>
+        <input type="text" name="nombre" value="" required><br><br>
         <label for="email">Correo electrónico:</label>
-        <input type="email" name="email" value="<?php echo $usuario->getEmail(); ?>" required><br><br>
+        <input type="email" name="email" value="" required><br><br>
         <!-- Agregar más campos según sea necesario -->
         <input type="submit" name="editar_perfil" value="Guardar Cambios">
     </form>

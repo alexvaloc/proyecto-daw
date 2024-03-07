@@ -1,10 +1,5 @@
 <?php
-
-// Llamamos a los archivos necesarios de php para el registro de nuevo usuario y el login
- 
-require_once 'controller/UsuarioController.php';
-require_once 'entities/Usuario.php';
-
+require_once "UsuarioController.php";
 //REGISTRO
 
 // Crear una instancia del controlador de usuario
@@ -38,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])){
 
     if($usuarioController->iniciarSesionController($email,$contraseña)){
         //Si el inicio se realiza con éxito, redirigimos a la vista "TableroDeViajes"
-        header ("Location: view/TableroDeViajes.php");
+        header ("Location: TableroDeViajes.php");
 
         exit; //Asegura que el script se detenga después de redirigir
     }else{
