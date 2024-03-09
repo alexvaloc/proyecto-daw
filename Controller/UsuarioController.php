@@ -1,7 +1,7 @@
 <?php
 
-require_once ROOT_DIR . '/entities/Usuario.php';
-require_once ROOT_DIR . '/model/UsuarioModel.php';
+require_once __DIR__ . '/../entities/Usuario.php';
+require_once __DIR__ . '/../model/UsuarioModel.php';
 
 //Clase UsuarioController
 class UsuarioController{
