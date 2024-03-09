@@ -1,8 +1,8 @@
 <?php
 
-require_once "Usuario.php";
-require_once "UsuarioController.php";
-require_once "UsuarioModel.php";
+require_once "../Entities/Usuario.php";
+require_once "../Controller/UsuarioController.php";
+require_once "../Model/UsuarioModel.php";
 
 // Verificar la sesión del usuario
 session_start();

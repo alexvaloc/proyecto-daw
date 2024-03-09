@@ -1,5 +1,5 @@
 <?php
-require_once "UsuarioController.php";
+require_once "./Controller/UsuarioController.php";
 //REGISTRO
 
 // Crear una instancia del controlador de usuario
