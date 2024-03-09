@@ -1,6 +1,7 @@
 <?php
 
 require_once "UsuarioModel.php";
+require_once "./Usuario.php";
 
 //Clase UsuarioController
 class UsuarioController{
