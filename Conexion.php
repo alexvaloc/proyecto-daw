@@ -23,7 +23,7 @@ function crearConexion(){
 
     return $conexion;
 }
-
+//PRueba de git
 //funcion para cerrar la conexión
 function cerrarConexion($conexion){
     
