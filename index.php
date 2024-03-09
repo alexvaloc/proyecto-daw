@@ -1,5 +1,8 @@
 <?php
-require_once "./Controller/UsuarioController.php";
+
+define('ROOT_DIR', __DIR__);
+
+require_once 'controller/UsuarioController.php';
 //REGISTRO
 
 // Crear una instancia del controlador de usuario
@@ -33,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])){
 
     if($usuarioController->iniciarSesionController($email,$contraseña)){
         //Si el inicio se realiza con éxito, redirigimos a la vista "TableroDeViajes"
-        header ("Location: TableroDeViajes.php");
+        header ("Location: View/TableroDeViajes.php");
 
         exit; //Asegura que el script se detenga después de redirigir
     }else{

@@ -1,7 +1,7 @@
 <?php
 
-require_once "../Model/UsuarioModel.php";
-require_once "./Usuario.php";
+require_once ROOT_DIR . '/entities/Usuario.php';
+require_once ROOT_DIR . '/model/UsuarioModel.php';
 
 //Clase UsuarioController
 class UsuarioController{

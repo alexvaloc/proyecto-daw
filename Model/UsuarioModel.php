@@ -1,6 +1,6 @@
 <?php
 
-require_once "Conexion.php";
+require_once ROOT_DIR . 'Conexion.php';
 
 //Clase UsuarioModel
 class UsuarioModel{
