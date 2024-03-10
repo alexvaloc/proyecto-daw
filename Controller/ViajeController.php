@@ -18,4 +18,16 @@ class ViajeController{
     public function obtenerViajesPorUsuarioController($idUsuario){
         return $this->viajeModel->obtenerViajesPorUsuarioModel($idUsuario);
     }
+
+    public function obtenerViajeporIdController($idViaje){
+        return $this->viajeModel->obtenerViajePorIdModel($idViaje);
+    }
+
+    public function actualizarViajeController(Viaje $viaje) {
+        return $this->viajeModel->actualizarViajeModel($viaje);
+    }
+
+    public function eliminarViajeController($idViaje, $idUsuario) {
+        return $this->viajeModel->eliminarViajeModel($idViaje, $idUsuario);
+    }
 }

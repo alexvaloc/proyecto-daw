@@ -16,9 +16,11 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Tablero de Viajes - Mytra</title>
 </head>
 <body>
+    
     <h1>Tablero de Viajes</h1>
     <h1>Bienvenido  a tu Tablero de Viajes en Mytra</h1>   
 
@@ -49,16 +51,14 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 <!-- Mostrar los viajes -->
 <h2>Mis Viajes</h2>
 <?php if(!empty($viajes)): ?>
-    <ul>
-        <?php foreach ($viajes as $viaje): ?>
-            <li>
-                <?php echo htmlspecialchars($viaje['nombre_viaje']);?> -
-                Desde: <?php echo htmlspecialchars($viaje['fecha_inicio']); ?>, 
-                Hasta: <?php echo htmlspecialchars($viaje['fecha_fin']); ?>, 
-                Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?> 
-             </li>
-        <?php endforeach; ?>
-    </ul>
+    <?php foreach ($viajes as $viaje): ?>
+        <div class="viaje" onclick="window.location.href='gestionViaje.php?id_viaje=<?php echo $viaje['id_viaje']; ?>';">
+                <h3><?php echo htmlspecialchars($viaje['nombre_viaje']);?></h3>
+                <p>Desde: <?php echo htmlspecialchars($viaje['fecha_inicio']); ?></p> 
+                <p>Hasta: <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
+                <p>Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?></p> 
+        </div>
+    <?php endforeach; ?>
 <?php else: ?>
     <p>No tienes viajes creados</p>
 <?php endif; ?>
