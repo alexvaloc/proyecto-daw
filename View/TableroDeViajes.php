@@ -1,18 +1,15 @@
 <?php
 
-require_once __DIR__ . '/../entities/Usuario.php';
-require_once __DIR__ . '/../model/UsuarioModel.php';
-require_once __DIR__ . '/../controller/UsuarioController.php';
+require_once __DIR__ . '/../controller/ViajeController.php';
 
-// Verificar la sesión del usuario
-session_start();
-if (!isset($_SESSION['usuario'])) {
-    header("Location: ../index.php");
-    exit;
-}
+// Raanudamos la sesión del usuario
+    session_start();
+    $viajeController = new ViajeController();
+    $idUsuario = $_SESSION['id_usuario'];
 
-$usuario = $_SESSION['usuario'];
-?>
+    //Obtenemos los viajes del usuario
+    $viajes = $viajeController->obtenerViajesPorUsuarioController($idUsuario);
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,14 +22,17 @@ $usuario = $_SESSION['usuario'];
     <h1>Tablero de Viajes</h1>
     <h1>Bienvenido  a tu Tablero de Viajes en Mytra</h1>   
 
+    <!-- Mostrar mensajes de éxito/error -->
+    <?php if (isset($_SESSION['mensaje'])): ?>
+        <p><?php echo $_SESSION['mensaje']; ?></p>
+        <?php unset($_SESSION['mensaje']); // Elimina el mensaje de la sesión después de mostrarlo ?>
+    <?php endif; ?>
+
    <!-- Formulario para crear un nuevo viaje -->
 <h2>Crear un nuevo viaje</h2>
-<form method="POST" action="crear_viaje.php">
+<form method="POST" action="../Controller/crearViaje.php">
     <label for="nombre_viaje">Nombre del Viaje:</label>
     <input type="text" name="nombre_viaje" id="nombre_viaje" required><br><br>
-
-    <label for="destino">Destino:</label>
-    <input type="text" name="destino" id="destino" required><br><br>
 
     <label for="fecha_inicio">Fecha de Inicio:</label>
     <input type="date" name="fecha_inicio" id="fecha_inicio" required><br><br>
@@ -46,6 +46,22 @@ $usuario = $_SESSION['usuario'];
     <input type="submit" name="crear_viaje" value="Crear Viaje">
 </form>
 
+<!-- Mostrar los viajes -->
+<h2>Mis Viajes</h2>
+<?php if(!empty($viajes)): ?>
+    <ul>
+        <?php foreach ($viajes as $viaje): ?>
+            <li>
+                <?php echo htmlspecialchars($viaje['nombre_viaje']);?> -
+                Desde: <?php echo htmlspecialchars($viaje['fecha_inicio']); ?>, 
+                Hasta: <?php echo htmlspecialchars($viaje['fecha_fin']); ?>, 
+                Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?> 
+             </li>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <p>No tienes viajes creados</p>
+<?php endif; ?>
 
     
     <!-- Enlaces para cerrar sesión -->

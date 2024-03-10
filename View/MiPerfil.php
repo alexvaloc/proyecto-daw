@@ -1,33 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../entities/Usuario.php';
-require_once __DIR__ . '/../model/UsuarioModel.php';
-require_once __DIR__ . '/../controller/UsuarioController.php';
-
-// Crear una instancia del controlador de usuario
-$usuarioController = new UsuarioController();
-
-// Verificar la sesión del usuario
 session_start();
-if (!isset($_SESSION['usuario'])) {
-    header("Location: ../index.php");
-    exit;
-}
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //Llamamos al controlador
-    $respuesta = $usuarioController->actualizarUsuarioController($_SESSION['id_usuario'], $_POST['nombre'], $_POST['email'], $_POST['contraseña'], $_POST['confirmar_contraseña']);
-    
-    if($respuesta === true){
-        $_SESSION['nombre'] = $_POST['nombre'];
-        $_SESSION['email'] = $_POST['email'];
-
-        echo "Perfil actualizado correctamente";
-    }else{
-    //Mostramos mensaje de error desde el modelo
-    echo $respuesta;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <!-- Formulario para editar perfil -->
 <h2>Editar perfil</h2>
-<form method="POST" action="MiPerfil.php">
+
+<?php if (isset($_SESSION['mensaje'])): ?>
+    <p><?= $_SESSION['mensaje']; ?></p>
+    <?php unset($_SESSION['mensaje']); // Elimina el mensaje de la sesión después de mostrarlo ?>
+<?php endif; ?>
+
+<form method="POST" action="../Controller/actualizarPerfil.php">
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" value="<?= $_SESSION['nombre'] ?>" required><br><br>
     <label for="email">Correo electrónico:</label>
