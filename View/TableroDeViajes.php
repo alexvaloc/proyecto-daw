@@ -22,7 +22,7 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 <body>
     
     <h1>Tablero de Viajes</h1>
-    <h1>Bienvenido  a tu Tablero de Viajes en Mytra</h1>   
+    <h2>Bienvenido  a tu Tablero de Viajes en Mytra</h2>   
 
     <!-- Mostrar mensajes de éxito/error -->
     <?php if (isset($_SESSION['mensaje'])): ?>

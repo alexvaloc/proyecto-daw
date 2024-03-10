@@ -92,34 +92,30 @@ class ViajeModel {
     }
 
     public function actualizarViajeModel(Viaje $viaje){
-        //preparamos la consulta SQL
-        $sql = "UPDATE Viajes 
-                SET nombre_viaje = ?, fecha_inicio = ?, fecha_fin = ?, presupuesto_total = ?, 
-                WHERE id_viaje = ? AND id_usuario = ?";
-
-        $stmt = $this->db->prepare($sql);
-        //Recogemos los datos del objeto viaje mediante sus getters
-        $nombreViaje = $viaje->getNombreViaje();
-        $fechaInicio = $viaje->getFechaInicio();
-        $fechaFin = $viaje->getFechaFin();
-        $presupuestoTotal = $viaje->getPresupuestoTotal();
-        $idUsuario = $viaje->getIdUsuario();
-        $idViaje = $viaje->getIdUsuario();
-
-         $stmt->bind_param("sssdi",
-            $nombreViaje,
-            $fechaInicio,
-            $fechaFin,
-            $presupuestoTotal,
-            $idUsuario,
-            $idViaje
-        );
-
-        if($resultado = $stmt->execute()){
+        $sql = "UPDATE Viajes SET nombre_viaje = ?, fecha_inicio = ?, fecha_fin = ?, presupuesto_total = ? WHERE id_viaje = ? AND id_usuario = ?";
+        if($stmt = $this->db->prepare($sql)){
+            // Asegúrate de que los tipos de datos aquí ('sssdii') coincidan con los tipos de datos en tu base de datos
+            $stmt->bind_param("sssdii", 
+                $viaje->getNombreViaje(),
+                $viaje->getFechaInicio(),
+                $viaje->getFechaFin(),
+                $viaje->getPresupuestoTotal(),
+                $viaje->getIdViaje(),
+                $viaje->getIdUsuario()
+            );
+    
+            $resultado = $stmt->execute();
             $stmt->close();
-            return $resultado;
-        }else{
-            return false;
+            
+            if($resultado){
+                return true; // La actualización fue exitosa
+            } else {
+                error_log("Error al actualizar el viaje: " . $stmt->error);
+                return false; // La actualización falló
+            }
+        } else {
+            error_log("Error preparando la consulta: " . $this->db->error);
+            return false; // Error preparando la consulta
         }
     }
 
