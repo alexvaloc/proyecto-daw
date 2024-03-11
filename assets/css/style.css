@@ -10,3 +10,22 @@
 .viaje:hover {
     background-color: #f0f0f0;
 }
+
+.destinos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio entre tarjetas */
+}
+
+.destino-card {
+    flex: 1;
+    min-width: 250px; /* Mínimo ancho de la tarjeta para asegurar que se reorganicen */
+    background-color: #f0f0f0; /* Color de fondo de la tarjeta */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra para las tarjetas */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+}
+
+.destino-card:hover {
+    background-color: #ccc;
+}

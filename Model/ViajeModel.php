@@ -94,7 +94,7 @@ class ViajeModel {
     public function actualizarViajeModel(Viaje $viaje){
         $sql = "UPDATE Viajes SET nombre_viaje = ?, fecha_inicio = ?, fecha_fin = ?, presupuesto_total = ? WHERE id_viaje = ? AND id_usuario = ?";
         if($stmt = $this->db->prepare($sql)){
-            // Asegúrate de que los tipos de datos aquí ('sssdii') coincidan con los tipos de datos en tu base de datos
+           
             $stmt->bind_param("sssdii", 
                 $viaje->getNombreViaje(),
                 $viaje->getFechaInicio(),

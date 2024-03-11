@@ -15,6 +15,8 @@ session_start();
     }
 
 if($_SERVER['REQUEST_METHOD'] ==='POST'){
+
+    try{
     $viaje = new Viaje();
     $viaje->setNombreViaje($_POST['nombre_viaje']);
     $viaje->setFechaInicio($_POST['fecha_inicio']);
@@ -32,6 +34,9 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 
     header("Location: ../View/TableroDeViajes.php");
     exit;
-
+}catch(Exception $e){
+    $_SESSION['mensaje'] = $e->getMessage();
+    header("Location: " . $_SERVER['HTTP_REFERER']); //Esto redirige al usuario a la página anterior
+}
 }
 ?>

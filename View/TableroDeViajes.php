@@ -32,7 +32,7 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 
    <!-- Formulario para crear un nuevo viaje -->
 <h2>Crear un nuevo viaje</h2>
-<form method="POST" action="../Controller/crearViaje.php">
+<form method="POST" action="../Controller/CrearViaje.php">
     <label for="nombre_viaje">Nombre del Viaje:</label>
     <input type="text" name="nombre_viaje" id="nombre_viaje" required><br><br>
 
@@ -56,7 +56,7 @@ require_once __DIR__ . '/../controller/ViajeController.php';
                 <h3><?php echo htmlspecialchars($viaje['nombre_viaje']);?></h3>
                 <p>Desde: <?php echo htmlspecialchars($viaje['fecha_inicio']); ?></p> 
                 <p>Hasta: <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
-                <p>Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?></p> 
+                <p>Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p> 
         </div>
     <?php endforeach; ?>
 <?php else: ?>

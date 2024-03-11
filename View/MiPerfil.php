@@ -20,7 +20,7 @@ session_start();
     <?php unset($_SESSION['mensaje']); // Elimina el mensaje de la sesión después de mostrarlo ?>
 <?php endif; ?>
 
-<form method="POST" action="../Controller/actualizarPerfil.php">
+<form method="POST" action="../Controller/ActualizarPerfil.php">
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" value="<?= $_SESSION['nombre'] ?>" required><br><br>
     <label for="email">Correo electrónico:</label>
