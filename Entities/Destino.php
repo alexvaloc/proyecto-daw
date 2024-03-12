@@ -9,12 +9,20 @@ class Destino {
     private $id_viaje;
     private $actividades = []; //Array para almacenar objetos Actividad relacionados con el destino
 
+    public function __construct($nombre_destino= '',$fecha_inicio = '0000-00-00',$fecha_fin  = '0000-00-00' , $id_viaje = null,$id_destino = null){
+        
+        $this->id_destino = $id_destino;
+        $this->nombre_destino = $nombre_destino;
+        $this->fecha_inicio = $fecha_inicio;
+        $this->fecha_fin = $fecha_fin;
+        $this->id_viaje= $id_viaje;
+    }
+
     //Setters y getters
 
     public function getIdDestino(){
         return $this->id_destino;
     }
-
     public function setIdDestino($id_destino){
         $this->id_destino = $id_destino;
     }

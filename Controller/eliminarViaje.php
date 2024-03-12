@@ -9,18 +9,21 @@ if(!isset($_SESSION['usuario'])){
     exit;
 }
 
-$idViaje = $_GET['id_viaje'] ?? null;
-$idUsuario =$_SESSION['id_usuario'];
 
-$viajeController = new ViajeController();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $idViaje = $_POST['id_viaje'] ?? null;
+    $idUsuario =$_SESSION['id_usuario'];
 
-if($viajeController->eliminarViajeController($idViaje, $idUsuario)){
-    $_SESSION['mensaje'] = "Viaje eliminado correctamente.";
-}else{
-    $_SESSION['mensaje'] = "Error al eliminar el viaje.";
+    $viajeController = new ViajeController();
+
+    if($viajeController->eliminarViajeController($idViaje, $idUsuario)){
+        $_SESSION['mensaje'] = "Viaje eliminado correctamente.";
+    }else{
+        $_SESSION['mensaje'] = "Error al eliminar el viaje.";
+    }
+
+    header("Location: ../View/TableroDeViajes.php");
+    exit;
 }
-
-header("Location: ../View/TableroDeViajes.php");
-exit;
 
 ?>
