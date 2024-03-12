@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . '/../entities/Actividad.php';
+require_once __DIR__ . '/../model/ActividadModel.php';
+
 class ActividadController {
     private $actividadModel;
 
@@ -8,23 +11,24 @@ class ActividadController {
     }
 
     public function crearActividadController(Actividad $actividad) {
-        // Llama al modelo para crear una actividad
+        return $this->actividadModel->crearActividadModel($actividad);
     }
 
-    public function obtenerActividadesPorDestinoController($id_destino) {
-        // Llama al modelo para obtener actividades por destino
+    public function obtenerActividadesPorDestinoController($idActividad) {
+        
+        return $this->actividadModel->obtenerActividadesPorDestinoModel($idActividad);
     }
 
-    public function obtenerActividadPorIdController($id_actividad) {
-        // Implementa la lógica para obtener todas las actividades de un destino
+    public function obtenerActividadPorIdController($idActividad) {
+        return $this->actividadModel->obtenerActividadPorIdModel($idActividad);
     }
 
 
     public function actualizarActividadController(Actividad $actividad) {
-        // Llama al modelo para actualizar una actividad
+        return $this->actividadModel->actualizarActividadModel($actividad);
     }
 
-    public function eliminarActividadController($id_actividad) {
-        // Llama al modelo para eliminar una actividad
+    public function eliminarActividadController($idDestino,$idActividad) {
+        return $this->actividadModel->eliminarActividadModel($idDestino, $idActividad);
     }
 }

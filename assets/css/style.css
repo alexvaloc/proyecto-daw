@@ -17,6 +17,17 @@
     gap: 20px; /* Espacio entre tarjetas */
 }
 
+.titulo-card{
+    color: inherit; 
+    text-decoration: none; /*Elimina el subrayado*/
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.titulo-card:hover{
+    color: #1b6353;
+}
+
 .destino-card {
     position: relative;
     display: flex;
@@ -74,4 +85,81 @@
 
 .btn-editar:hover, .btn-eliminar:hover {
     background-color: #3bc5ae;
+}
+
+/*gestionActividades botones*/
+
+.btn-editar-act, .btn-eliminar-act {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    margin-left: 5px; /* Espacio entre botones */
+    cursor: pointer;
+}
+
+.btn-editar-act {
+    background-color: #37a089; /* Verde */
+}
+
+.btn-eliminar-act {
+    background-color: #e76c63; /* Rojo */
+}
+
+/*gestionActividades Tabla*/
+
+/* Estilos generales para la tabla */
+.tabla-actividades {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.tabla-actividades th, .tabla-actividades td {
+    padding: 10px;
+    border: 1px solid #ddd; /* Color de borde ligero */
+    text-align: left;
+}
+
+/* Cabecera de la tabla */
+.tabla-actividades thead {
+    background-color: #2E8B57; /* Verde bosque */
+    color: #FFFFFF; /* Texto blanco */
+}
+
+/* Filas de la tabla */
+.tabla-actividades tbody tr:nth-child(odd) {
+    background-color: #68c9c9; /* Turquesa pálido para filas impares */
+}
+
+.tabla-actividades tbody tr:nth-child(even) {
+    background-color: #24c2bd; /* Turquesa moderado para filas pares */
+}
+
+/* Estilo para el hover de las filas */
+.tabla-actividades tbody tr:hover {
+    background-color: #069191; /* Lime Green para resaltar al pasar el ratón */
+    color: #FFFFFF; /* Texto blanco para mejorar la legibilidad */
+}
+
+/* Botones dentro de la tabla */
+.tabla-actividades .btn-editar, .tabla-actividades .btn-eliminar {
+    padding: 5px 10px;
+    color: #FFFFFF; /* Texto blanco */
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tabla-actividades .btn-editar {
+    background-color: #32CD32; /* Lime Green para el botón editar */
+}
+
+.tabla-actividades .btn-eliminar {
+    background-color: #B22222; /* Firebrick para el botón eliminar */
+}
+
+.tabla-actividades .btn-editar:hover, .tabla-actividades .btn-eliminar:hover {
+    opacity: 0.8; /* Efecto al pasar el ratón */
 }

@@ -12,6 +12,16 @@ class Actividad{
     private $precio;
     private $id_destino;
 
+    public function __construct($nombre_actividad= '',$descripcion = '',$fecha = '0000-00-00' , $duracion = '', $precio = 0, $id_actividad = null,$id_destino = null){
+        
+        $this->id_actividad = $id_actividad;
+        $this->nombre_actividad = $nombre_actividad;
+        $this->fecha = $fecha;
+        $this->duracion = $duracion;
+        $this->precio= $precio;
+        $this->id_destino= $id_destino;
+    }
+
     //Setters y getters
 
     public function getIdActividad(){

@@ -57,10 +57,15 @@ class DestinoModel{
     }
 
     public function obtenerDestinosPorViajeModel($idViaje){
+        //Definimos la consulta
         $sql = "SELECT * FROM Destinos WHERE id_viaje = ? ORDER BY fecha_inicio ASC";
+         //Creamos un array donde meter nuestros destinos
         $destinos = [];
+        //Preparamos al consulta
         if($stmt = $this->db->prepare($sql)){
             $stmt->bind_param("i", $idViaje);
+
+            //Ejecutamos la consulta
             if($stmt->execute()){
                 $resultado = $stmt->get_result();
                 while($fila = $resultado->fetch_assoc()){
@@ -78,9 +83,10 @@ class DestinoModel{
     }
 
     public function actualizarDestinoModel(Destino $destino){
+        //Definimos la consulta SQL
         $sql = "UPDATE Destinos SET nombre_destino = ?, fecha_inicio = ?, fecha_fin = ?
                 WHERE id_destino = ? AND id_viaje = ?";
-
+        //Preparamos la consulta
         if($stmt = $this->db->prepare($sql)){
 
             $stmt->bind_param("sssii",
@@ -108,7 +114,7 @@ class DestinoModel{
     }
 
     public function eliminarDestinoModel($idDestino, $idViaje){
-        $sql = "DELETE FROM Destinos WHERE id_destino = ? AND id_viaje = ?";
+        $sql = "DELETE FROM Actividades WHERE id_destino = ? AND id_viaje = ?";
 
         if($stmt = $this->db->prepare($sql)){
             $stmt->bind_param("ii", $idDestino, $idViaje);
