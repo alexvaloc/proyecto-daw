@@ -117,7 +117,7 @@ if ($idViaje) {
         <div class="destinos-container">
             <?php foreach ($destinos as $destino): ?>
                 <div class="destino-card">
-                    <div class="destino" onclick="window.location.href='gestionActividades.php?id_destino=<?php echo $destino['id_destino']; ?>';">
+                    <div class="destino" onclick="window.location.href='gestionActividades.php?id_destino=<?php echo $destino['id_destino']; ?>&id_viaje=<?=$idViaje?>';">
                         <h3 class="titulo-card"><?= htmlspecialchars($destino['nombre_destino'])?></h3>
                     </div>
                     <div class="card-content">

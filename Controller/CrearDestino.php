@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../Controller/DestinoController.php';
-require_once __DIR__ . '/../entities/Destino.php';
+require_once __DIR__ . '/../Entities/Destino.php';
 
 session_start();
 

@@ -16,6 +16,7 @@ class Actividad{
         
         $this->id_actividad = $id_actividad;
         $this->nombre_actividad = $nombre_actividad;
+        $this->descrpicion = $descripcion;
         $this->fecha = $fecha;
         $this->duracion = $duracion;
         $this->precio= $precio;

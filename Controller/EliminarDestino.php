@@ -9,12 +9,12 @@ if(!isset($_SESSION['usuario'])){
     exit;
 }
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_destino'])){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $idDestino = $_POST['id_destino'];
     $idViaje = $_POST['id_viaje'];
 
     $destinoController = new DestinoController();
-    $resultado = $destinoController->eliminarDestinoController($idDestino,$idViaje);
+    $resultado = $destinoController->eliminarDestinoController($idDestino);
 
     if($resultado){
         $_SESSION['mensaje'] = "Destino eliminado correctamente";

@@ -123,10 +123,10 @@ class ActividadModel {
 
     public function eliminarActividadModel($idDestino, $idActividad) {
         //Definimos la consulta
-        $sql = "DELETE FROM Actividades WHERE id_actividad = ? AND id_viaje = ?";
+        $sql = "DELETE FROM Actividades WHERE id_actividad = ? AND id_destino = ?";
         //Preparamos la consulta
         if($stmt = $this->db->prepare($sql)){
-            $stmt->bind_param("ii", $idDestino, $idActividad);
+            $stmt->bind_param("ii", $idActividad, $idDestino);
             $resultado = $stmt->execute();
             $stmt->close();
             return $resultado;

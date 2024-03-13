@@ -113,11 +113,10 @@ class DestinoModel{
         }
     }
 
-    public function eliminarDestinoModel($idDestino, $idViaje){
-        $sql = "DELETE FROM Actividades WHERE id_destino = ? AND id_viaje = ?";
-
+    public function eliminarDestinoModel($idDestino){
+        $sql = "DELETE FROM Destinos WHERE id_destino = ?";
         if($stmt = $this->db->prepare($sql)){
-            $stmt->bind_param("ii", $idDestino, $idViaje);
+            $stmt->bind_param("i", $idDestino);
             $resultado = $stmt->execute();
             $stmt->close();
             return $resultado;

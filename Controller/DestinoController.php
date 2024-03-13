@@ -19,8 +19,8 @@ class DestinoController{
         return $this->destinoModel->actualizarDestinoModel($destino);
     }
 
-    public function eliminarDestinoController($idViaje,$idDestino){
-        return $this->destinoModel->eliminarDestinoModel($idViaje,$idDestino);
+    public function eliminarDestinoController($idDestino){
+        return $this->destinoModel->eliminarDestinoModel($idDestino);
     }
 
     public function obtenerDestinoPorIdController($idDestino){
