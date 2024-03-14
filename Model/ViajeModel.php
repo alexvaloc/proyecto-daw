@@ -44,7 +44,7 @@ class ViajeModel {
         $viajes = [];
 
         //Concretamos la consulta SQL
-        $sql = "SELECT * FROM Viajes Where id_usuario = ? ORDER BY fecha_inicio DESC";
+        $sql = "SELECT * FROM Viajes Where id_usuario = ? ORDER BY fecha_inicio ASC";
 
         $stmt = $this->db->prepare($sql);
 
@@ -130,6 +130,21 @@ class ViajeModel {
             $stmt->close();
             return $resultado;
         } else { 
+            return false;
+        }
+    }
+
+    public function actualizarImagenModel($idViaje, $nombreImagen){
+        $sql = "UPDATE Viajes SET ruta_imagen = ? WHERE id_viaje = ?";
+
+        if($stmt = $this->db->prepare($sql)){
+            $stmt->bind_param("si", $nombreImagen, $idViaje);
+            $stmt->execute();
+            $affectedRows = $stmt->affected_rows> 0;
+
+            $stmt->close();
+            return $affectedRows > 0;            
+        }else{
             return false;
         }
     }

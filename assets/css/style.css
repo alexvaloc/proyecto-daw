@@ -1,15 +1,4 @@
-.viaje {
-    cursor: pointer;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
 
-.viaje:hover {
-    background-color: #f0f0f0;
-}
 
 .destinos-container {
     display: flex;
@@ -88,4 +77,104 @@
 }
 
 
+.img-container, .img-viaje-contaier{
+    border: 2px solid black;
+}
 
+/*Tarjetas de viaje*/
+
+/* Estilo general para asegurar que el contenido esté centrado */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Estilo para la tarjeta de viaje */
+.viaje {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;   
+    box-shadow: 0 4px 8px rgba(37, 36, 36, 0.2);
+    width: 70%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.viaje:hover {
+    transform: translateY(-5px);
+    
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para la información del viaje */
+.viaje-info {
+    width: 60%;
+    cursor: pointer;
+}
+
+/* Estilo para la imagen del viaje */
+.viaje-imagen img {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: right;
+    border-radius: 8px;
+    max-width: 250px; /* Ajusta esto según necesites */
+    max-height: 250px; /* Ajusta esto según necesites */
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.viaje-imagen-form input[type="file"] {
+    display: none; /* Oculta el label y el input, mostrando solo el botón */
+}
+
+/* Estilo para el formulario de carga de imagen */
+.viaje-imagen-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+}
+
+.viaje-imagen-form input[type="file"] {
+    margin-bottom: 10px;
+}
+
+
+.viaje-imagen-form input[type="submit"]:hover, .viaje-imagen-form input[type="submit"]:focus {
+    background-color: #109e9e;
+    border-color: #0d7979;
+    color: white;
+    outline: none;
+}
+
+.viaje-imagen-form label, .viaje-imagen-form input[type="submit"]   {
+    display: inline-block; /* Hace que el label se comporte como un bloque, permitiendo el padding */
+    padding: 10px 15px; /* Espaciado interno */
+    background-color: #069191; /* Color de fondo azul */
+    color: #ffffff; /* Color de texto blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid transparent; /* Borde transparente que puede cambiar en hover/focus */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickeable */
+    text-align: center; /* Alinea el texto al centro */
+    transition: background-color 0.2s, border-color 0.2s; /* Transición suave para hover/focus */
+}
+
+.viaje-imagen-form label:hover, .viaje-imagen-form label:focus {
+    background-color: #109e9e; /* Color de fondo más oscuro al pasar el mouse o enfocar */
+    border-color: #0d7979; /* Borde más oscuro para dar efecto de botón presionado */
+    outline: none; /* Elimina el contorno que aparece en focus en algunos navegadores */
+    text-decoration: none; /* Asegura que no haya subrayado en el texto */
+}

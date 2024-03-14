@@ -10,8 +10,8 @@ class Viaje {
     private $presupuesto_total;
     private $id_usuario;
     private $destinos = []; //Array para recolectar los diferentes destinos que pueden estar asociados a Viaje
-
-    public function __construct($nombre_viaje= '',$fecha_inicio = '0000-00-00',$fecha_fin  = '0000-00-00' ,$presupuesto_total = 0,$id_usuario = null, $id_viaje = null){
+    private $rutaImagen;
+    public function __construct($nombre_viaje= '',$fecha_inicio = '0000-00-00',$fecha_fin  = '0000-00-00' ,$presupuesto_total = 0,$id_usuario = null, $id_viaje = null, $rutaImagen= ''){
         
         $this->id_viaje = $id_viaje;
         $this->nombre_viaje = $nombre_viaje;
@@ -19,6 +19,7 @@ class Viaje {
         $this->fecha_fin = $fecha_fin;
         $this->presupuesto_total = $presupuesto_total;
         $this->id_usuario = $id_usuario;
+        $this->rutaImagen = $rutaImagen;
     }
 
     //Getters y Setters
@@ -101,6 +102,14 @@ class Viaje {
 
     public function setDestino(Destino $destino){
         $this->destinos[] = $destino;
+    }
+
+    public function getRutaimagen(){
+        return $this->rutaImagen;
+    }
+
+    public function setRutaImagen($rutaImagen){
+        $this->rutaImagen = $rutaImagen;
     }
 }
 

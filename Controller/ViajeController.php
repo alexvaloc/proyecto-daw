@@ -30,4 +30,8 @@ class ViajeController{
     public function eliminarViajeController($idViaje, $idUsuario) {
         return $this->viajeModel->eliminarViajeModel($idViaje, $idUsuario);
     }
+
+    public function actualizarImagenViajeController($idViaje, $nombreImagen){
+        return $this->viajeModel->actualizarImagenModel($idViaje, $nombreImagen);
+    }
 }

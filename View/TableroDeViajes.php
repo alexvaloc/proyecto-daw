@@ -4,6 +4,13 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 
 // Raanudamos la sesión del usuario
     session_start();
+
+    
+    if (!isset($_SESSION['usuario'])) {
+        header("Location: ../index.php");
+        exit;
+    }
+
     $viajeController = new ViajeController();
     $idUsuario = $_SESSION['id_usuario'];
 
@@ -52,11 +59,29 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 <h2>Mis Viajes</h2>
 <?php if(!empty($viajes)): ?>
     <?php foreach ($viajes as $viaje): ?>
-        <div class="viaje" onclick="window.location.href='gestionViaje.php?id_viaje=<?php echo $viaje['id_viaje']; ?>';">
-                <h3><?php echo htmlspecialchars($viaje['nombre_viaje']);?></h3>
-                <p>Desde: <?php echo htmlspecialchars($viaje['fecha_inicio']); ?></p> 
-                <p>Hasta: <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
-                <p>Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p> 
+        <div class="viaje" >
+                <div class="viaje-info" onclick="window.location.href='gestionViaje.php?id_viaje=<?php echo $viaje['id_viaje']; ?>';">
+                    <h3><?php echo htmlspecialchars($viaje['nombre_viaje']);?></h3>
+                    <p>Desde: <?php echo htmlspecialchars($viaje['fecha_inicio']); ?></p> 
+                    <p>Hasta: <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
+                    <p>Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p> 
+                </div>
+                <div class="viaje-imagen">
+                    <!--Si hay una imágen, mostrarla-->
+                    <?php if(!empty($viaje['ruta_imagen'])): ?>
+                        <img src="../assets/uploads/<?php echo htmlspecialchars($viaje['ruta_imagen']);?>" alt="Imagen del viaje">
+                    <?php endif; ?>
+                    
+                     <!--Formulario para cargar imagen-->
+                    <div class="viaje-imagen-form">
+                    <form method="POST" action="../Controller/ActualizarImagenViaje.php" enctype="multipart/form-data">
+                        <input type="hidden" name="id_viaje" value="<?php echo $viaje['id_viaje']; ?>">
+                        <label for="imagen_viaje_<?php echo $viaje['id_viaje'];?>">Subir una foto </label>
+                        <input type="file" name="imagen_viaje" id="imagen_viaje_<?php echo $viaje['id_viaje'];?>" accept="image/*" onchange="this.form.submit()"><br><br>
+                        <!-- <input type="submit" value="Cambiar imagen"> -->
+                    </form>
+                    </div>
+                </div>
         </div>
     <?php endforeach; ?>
 <?php else: ?>
