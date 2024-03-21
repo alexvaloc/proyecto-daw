@@ -32,8 +32,7 @@ class UsuarioController{
         // Actualizamos la sesión con la información completa del usuario
         $_SESSION['nombre'] = $datosUsuario['nombre'];
         $_SESSION['email'] = $datosUsuario['email'];
-        $_SESSION['contraseña'] = $datosUsuario['contraseña'];
-        // Agrega aquí más campos según sea necesario
+        //No agregamos la contraseña por razones de seguridad
 
         return true; // Inicio de sesión y actualización de sesión exitosos.
 

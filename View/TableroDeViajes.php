@@ -24,6 +24,10 @@ require_once __DIR__ . '/../controller/ViajeController.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
+     <!--BOOTSTRAP CSS-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Tablero de Viajes - Mytra</title>
 </head>
 <body>
@@ -38,24 +42,26 @@ require_once __DIR__ . '/../controller/ViajeController.php';
     <?php endif; ?>
 
    <!-- Formulario para crear un nuevo viaje -->
-<h2>Crear un nuevo viaje</h2>
-<form method="POST" action="../Controller/CrearViaje.php">
-    <label for="nombre_viaje">Nombre del Viaje:</label>
-    <input type="text" name="nombre_viaje" id="nombre_viaje" required><br><br>
+<div class="container">
+    <h2>Crear un nuevo viaje</h2>
+    <form method="POST" action="../Controller/CrearViaje.php">
+        <label for="nombre_viaje">Nombre del Viaje:</label>
+        <input type="text" name="nombre_viaje" id="nombre_viaje" required><br><br>
 
-    <label for="fecha_inicio">Fecha de Inicio:</label>
-    <input type="date" name="fecha_inicio" id="fecha_inicio" required><br><br>
+        <label for="fecha_inicio">Fecha de Inicio:</label>
+        <input type="date" name="fecha_inicio" id="fecha_inicio" required><br><br>
 
-    <label for="fecha_fin">Fecha de Fin:</label>
-    <input type="date" name="fecha_fin" id="fecha_fin" required><br><br>
+        <label for="fecha_fin">Fecha de Fin:</label>
+        <input type="date" name="fecha_fin" id="fecha_fin" required><br><br>
 
-    <label for="presupuesto_total">Presupuesto Total:</label>
-    <input type="number" name="presupuesto_total" id="presupuesto_total" step="0.01" required><br><br>
+        <label for="presupuesto_total">Presupuesto Total:</label>
+        <input type="number" name="presupuesto_total" id="presupuesto_total" step="0.01" required><br><br>
 
-    <input type="submit" name="crear_viaje" value="Crear Viaje">
-</form>
-
+        <input type="submit" name="crear_viaje" value="Crear Viaje">
+    </form>
+</div>
 <!-- Mostrar los viajes -->
+<div class="container text-center">
 <h2>Mis Viajes</h2>
 <?php if(!empty($viajes)): ?>
     <?php foreach ($viajes as $viaje): ?>
@@ -87,12 +93,15 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 <?php else: ?>
     <p>No tienes viajes creados</p>
 <?php endif; ?>
-
+</div>
     
     <!-- Enlaces para cerrar sesión -->
 
     <a href="../index.php?cerrarSesion=true">Cerrar Sesión</a>
     <a href="./MiPerfil.php">Mi Perfil</a>
-   
+
+    <!--BOOTSTRAP JS-->  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>

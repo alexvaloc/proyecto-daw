@@ -18,7 +18,7 @@ function crearConexion(){
     if(!$conexion){
         die("<br>Error de conexión con la base de datos: " . mysqli_connect_error()."</br>");
     }else{
-        echo "<br>Conexión correcta a la base de datos: ". $database . "<br>";
+        // echo "<br>Conexión correcta a la base de datos: ". $database . "<br>";
     }
 
     return $conexion;

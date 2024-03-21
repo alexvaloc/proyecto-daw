@@ -31,4 +31,8 @@ class ActividadController {
     public function eliminarActividadController($idDestino,$idActividad) {
         return $this->actividadModel->eliminarActividadModel($idDestino, $idActividad);
     }
+
+    public function calcularTotalPrecioPorDestinoController($idDestino) {
+        return $this->actividadModel->calcularTotalPrecioPorDestinoModel($idDestino);
+    }
 }

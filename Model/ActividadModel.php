@@ -135,4 +135,16 @@ class ActividadModel {
         }
     }
 
+    public function calcularTotalPrecioPorDestinoModel($idDestino){
+        //Sentencia SQL para calcular el precio total de las actividades
+    $sql = "SELECT SUM(Precio) AS total_precios FROM actividades WHERE id_destino = $idDestino";
+    $resultado = mysqli_query($this->db, $sql);
+    if($resultado) {
+        $fila = mysqli_fetch_assoc($resultado);
+        return $fila['total_precios']; // Retorna el total de los precios
+    } else {
+        return 0; // En caso de error o si no hay datos, retorna 0
+    }
+    }
+
 }

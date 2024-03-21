@@ -16,24 +16,46 @@ class UsuarioModel{
     public function registrarUsuarioModel($usuario){
         $nombre = $usuario->getNombre();
         $email = $usuario->getEmail();
-        $contraseña = $usuario->getContraseña();
+        //Encriptamos la contraseña
+        $contraseña = password_hash($usuario->getContraseña(), PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO Usuarios (nombre, email, contraseña) VALUES ('$nombre', '$email','$contraseña')";
-        $result = mysqli_query($this->db, $sql);
+        $sql = "INSERT INTO Usuarios (nombre, email, contraseña) VALUES (?, ?, ?)";
+            $stmt = mysqli_prepare($this->db, $sql);
+            if (false === $stmt) {
+                // Error al preparar la sentencia
+                throw new Exception("Error al preparar la sentencia: " . mysqli_error($this->db));
+            }
 
-        return $result;
+            $resultado = mysqli_stmt_bind_param($stmt, "sss", $nombre, $email, $contraseña);
+            if (false === $resultado) {
+                // Error al vincular parámetros
+                throw new Exception("Error al vincular parámetros: " . mysqli_stmt_error($stmt));
+            }
+
+            $resultado = mysqli_stmt_execute($stmt);
+            if (false === $resultado) {
+                // Error al ejecutar la sentencia
+                throw new Exception("Error al ejecutar la sentencia: " . mysqli_stmt_error($stmt));
+            }
+            //Cerramos la conexión
+            mysqli_stmt_close($stmt);
+        return $resultado;
     }
 
     //Funcion para iniciar sesión
 
     public function iniciarSesionModel($email, $contraseña){
-        $sql = "SELECT * FROM Usuarios WHERE email = '$email' AND contraseña = '$contraseña'";
+        //Preparamos la consulta 
+        $sql = "SELECT * FROM Usuarios WHERE email = '$email'";
+        //Ejecutamos la consulta
         $resultado = mysqli_query($this->db, $sql);
+        //Recojemos los resultados
         $usuario = mysqli_fetch_assoc($resultado);
 
-        //var_dump($usuario);
+        //var_dump($usuario); Prueba de debuggin
 
-        if($usuario){
+        //Desencriptamos la contraseña, si coincide se guardan los datos del usuario en la sesion
+        if($usuario && password_verify($contraseña, $usuario['contraseña'])){
             //Iniciar sesion de usuario
             session_start();
             $_SESSION['usuario'] = $usuario;
@@ -51,11 +73,17 @@ class UsuarioModel{
         }
     }
 
+    // Funcion de buscar usuario
     public function buscarUsuarioPorID($id){
+        //Consulta
         $sql = "SELECT * FROM Usuarios WHERE id_usuario= ?";
+        //Preparamos la consulta
         $stmt = mysqli_prepare($this->db, $sql);
+        //Asignamos los valores
         mysqli_stmt_bind_param($stmt, "i", $id);
+        //Ejecutamos la consulta
         mysqli_stmt_execute($stmt);
+        //Recojemos los resultados
         $resultado = mysqli_stmt_get_result($stmt);
         $usuario = mysqli_fetch_assoc($resultado);
 
