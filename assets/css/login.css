@@ -2,6 +2,7 @@
 
 * {
     font-family: "Poppins", sans-serif;
+    
 }
 
 .wrapper{
@@ -32,30 +33,6 @@
     position: relative;
     border-radius:  10px 0 0 10px;
 }
-
-/* .logo{
-    height: 100px;
-    width: auto;
-    margin-left: 20px;
-}
-
-.header-logo{
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    padding: 20px 0;
-    align-items: center;
-    margin: auto;
-}
-
-.header-title{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: 0;
-    flex-grow: 1;
-    text-align: right;
-} */
 
 .text{
     position: absolute;
@@ -133,7 +110,7 @@ i{
 }
 
 .input-field .input:focus, .input-field .input:valid{
-    border-bottom: 1px solid rgba(16, 136, 130, 0.9);
+    border-bottom: 1px solid #004e92;
 }
 
 .submit{
@@ -165,7 +142,7 @@ span a {
 
 span a:hover{
     text-decoration: underline;
-    color: #000;
+    color: #004e92;
 }
 
 /*MEDIA QUERY para definir parametros en tamaño movil*/

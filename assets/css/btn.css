@@ -1,0 +1,62 @@
+
+
+/*Estilo de botones*/
+
+body{
+    background-color:  #ececec;
+}
+
+.btn-eliminar {
+    margin-top: 5px !important;
+    padding: 6px 15px !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    background-color: #976f33 !important; /* Deep aqua for delete button */
+    color: #ffffff !important; /* Mist for text */
+    border-radius: 5px !important;
+    border: none !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+    box-shadow: 2px 2px 5px #c2c5c5 !important; /* Peacock blue for shadow */
+}
+
+.btn-eliminar:hover {
+    background-color: #a78654 !important; /* Peacock blue for hover state */
+    box-shadow: 3px 3px 7px #128277 !important; /* Deep aqua for a deeper shadow on hover */
+}
+
+.btn-editar {
+    margin-top: 5px !important;
+    padding: 6px 15px !important;
+    cursor: pointer !important;
+    text-align: center;
+    background-color: #069191 !important; /* Lichen for edit button */
+    color: #ffffff !important; /* Mist for text */
+    border-radius: 5px !important; 
+    border: none !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+    box-shadow: 2px 2px 5px #c2c5c5 !important; /* Deep aqua for shadow */
+}
+
+.btn-editar:hover {
+    background-color: #6aaaaa !important; /* Mist for hover state */
+    color: #004D47 !important; /* Peacock blue for text on hover */
+    box-shadow: 3px 3px 7px #52958b !important; /* Lichen for a larger shadow on hover */
+}
+
+.btn-primary {
+    margin-top: 5px !important;
+    padding: 6px 15px !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    background-color: #004D47 !important; 
+    color: #ffffff !important; 
+    border-radius: 5px !important;
+    border: none !important;
+    transition: background-color 0.3s, box-shadow 0.3s !important;
+    box-shadow: 2px 2px 5px #128277 !important; /* Deep aqua for shadow */
+}
+
+.btn-primary:hover {
+    background-color: #52958b !important; /* Lichen for hover state */
+    box-shadow: 3px 3px 7px #004D47 !important; /* Peacock blue for a deeper shadow on hover */
+}

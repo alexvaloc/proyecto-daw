@@ -23,82 +23,107 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.css">
-     <!--BOOTSTRAP CSS-->
+    <link rel="stylesheet" href="../assets/css/btn.css">
+    <link rel="stylesheet" href="../assets/css/tablero-viajes.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <!--BOOTSTRAP CSS-->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!--FontAwesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Tablero de Viajes - Mytra</title>
 </head>
 <body>
+
+    <?php include './navbar.php'; ?>
     
-    <h1>Tablero de Viajes</h1>
-    <h2>Bienvenido  a tu Tablero de Viajes en Mytra</h2>   
-
-    <!-- Mostrar mensajes de éxito/error -->
-    <?php if (isset($_SESSION['mensaje'])): ?>
-        <p><?php echo $_SESSION['mensaje']; ?></p>
-        <?php unset($_SESSION['mensaje']); // Elimina el mensaje de la sesión después de mostrarlo ?>
-    <?php endif; ?>
-
-   <!-- Formulario para crear un nuevo viaje -->
-<div class="container">
-    <h2>Crear un nuevo viaje</h2>
-    <form method="POST" action="../Controller/CrearViaje.php">
-        <label for="nombre_viaje">Nombre del Viaje:</label>
-        <input type="text" name="nombre_viaje" id="nombre_viaje" required><br><br>
-
-        <label for="fecha_inicio">Fecha de Inicio:</label>
-        <input type="date" name="fecha_inicio" id="fecha_inicio" required><br><br>
-
-        <label for="fecha_fin">Fecha de Fin:</label>
-        <input type="date" name="fecha_fin" id="fecha_fin" required><br><br>
-
-        <label for="presupuesto_total">Presupuesto Total:</label>
-        <input type="number" name="presupuesto_total" id="presupuesto_total" step="0.01" required><br><br>
-
-        <input type="submit" name="crear_viaje" value="Crear Viaje">
-    </form>
-</div>
-<!-- Mostrar los viajes -->
-<div class="container text-center">
-<h2>Mis Viajes</h2>
-<?php if(!empty($viajes)): ?>
-    <?php foreach ($viajes as $viaje): ?>
-        <div class="viaje" >
-                <div class="viaje-info" onclick="window.location.href='gestionViaje.php?id_viaje=<?php echo $viaje['id_viaje']; ?>';">
-                    <h3><?php echo htmlspecialchars($viaje['nombre_viaje']);?></h3>
-                    <p>Desde: <?php echo htmlspecialchars($viaje['fecha_inicio']); ?></p> 
-                    <p>Hasta: <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
-                    <p>Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p> 
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar - Formulario para crear un nuevo viaje -->
+        <div class="col-sm-3 col-md-3 col-lg-2 ml-4 sidebar">
+            <div class="text-center mt-2 mb-4">
+                <h2 class="lead mt-4 mb-3">Bienvenido  a tu Tablero de Viajes en Mytra</h2>   
+            </div>
+            <div class="mb-1">
+            <h2 class="display 5 mb-4">Crear un nuevo viaje</h2>
+            </div>
+            <form method="POST" action="../Controller/CrearViaje.php">
+               <div class="mb-1">
+                    <label class="form-label" for="nombre_viaje">Nombre del Viaje:</label>
+                    <input class="form-control" type="text" name="nombre_viaje" id="nombre_viaje" required><br><br>
                 </div>
-                <div class="viaje-imagen">
-                    <!--Si hay una imágen, mostrarla-->
-                    <?php if(!empty($viaje['ruta_imagen'])): ?>
-                        <img src="../assets/uploads/<?php echo htmlspecialchars($viaje['ruta_imagen']);?>" alt="Imagen del viaje">
-                    <?php endif; ?>
-                    
-                     <!--Formulario para cargar imagen-->
-                    <div class="viaje-imagen-form">
-                    <form method="POST" action="../Controller/ActualizarImagenViaje.php" enctype="multipart/form-data">
-                        <input type="hidden" name="id_viaje" value="<?php echo $viaje['id_viaje']; ?>">
-                        <label for="imagen_viaje_<?php echo $viaje['id_viaje'];?>">Subir una foto </label>
-                        <input type="file" name="imagen_viaje" id="imagen_viaje_<?php echo $viaje['id_viaje'];?>" accept="image/*" onchange="this.form.submit()"><br><br>
-                        <!-- <input type="submit" value="Cambiar imagen"> -->
-                    </form>
-                    </div>
+
+                <div class="mb-1">
+                    <label class="form-label" for="fecha_inicio">Fecha de Inicio:</label>
+                    <input class="form-control" type="date" name="fecha_inicio" id="fecha_inicio" required><br><br>
                 </div>
+
+                <div class="mb-1">
+                    <label class="form-label" for="fecha_fin">Fecha de Fin:</label>
+                    <input class="form-control" type="date" name="fecha_fin" id="fecha_fin" required><br><br>
+                </div>
+
+                <div class="mb-1">
+                    <label class="form-label" for="presupuesto_total">Presupuesto Total:</label>
+                    <input class="form-control" type="number" name="presupuesto_total" id="presupuesto_total" step="0.01" required><br><br>
+                </div>
+
+                <input class="btn btn-primary crear_viaje mb-4" type="submit" name="crear_viaje" value="Crear Viaje">
+            </form>
         </div>
-    <?php endforeach; ?>
-<?php else: ?>
-    <p>No tienes viajes creados</p>
-<?php endif; ?>
-</div>
-    
-    <!-- Enlaces para cerrar sesión -->
 
-    <a href="../index.php?cerrarSesion=true">Cerrar Sesión</a>
-    <a href="./MiPerfil.php">Mi Perfil</a>
+     
+<!-- Contenido principal - Mis Viajes -->
+    <div class="col-sm-9 col-md-9 col-lg-10" style="background: #ececec;">
+        <!-- Mostrar mensajes de éxito/error -->
+        <?php if (isset($_SESSION['mensaje'])): ?>
+            <div class="alert alert-info text-center"><?php echo $_SESSION['mensaje']; ?></div>
+            <?php unset($_SESSION['mensaje']); // Elimina el mensaje de la sesión después de mostrarlo ?>
+        <?php endif; ?>
+
+       
+        <div class="text-center mb-4">
+            <h2 class="display-3 ">Mis Viajes</h2>
+        </div>
+        <!--Fila para las tarjetas de viaje-->
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
+            <?php if(!empty($viajes)): ?>
+                <?php foreach ($viajes as $viaje): ?>
+                    <!--Columna individual para cada tarjeta de viaje-->
+                    <div class="container-fluid col-12 col-sm-11 col-md-11 col-lg-6 mb-3 g-3 viaje" >
+                            <div class="viaje-info" onclick="window.location.href='gestionViaje.php?id_viaje=<?php echo $viaje['id_viaje']; ?>';">
+                                <h3><?php echo htmlspecialchars($viaje['nombre_viaje']);?></h3>
+                                <p>Desde: <?php echo htmlspecialchars($viaje['fecha_inicio']); ?></p> 
+                                <p>Hasta: <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
+                                <p>Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p> 
+                            </div>
+                            <div class="viaje-imagen">
+                                <!--Si hay una imágen, mostrarla-->
+                                <?php if(!empty($viaje['ruta_imagen'])): ?>
+                                    <img src="../assets/uploads/<?php echo htmlspecialchars($viaje['ruta_imagen']);?>" class="rounded float-start" alt="Imagen del viaje">
+                                <?php endif; ?>
+                                
+                                <!--Formulario para cargar imagen-->
+                                <div class="viaje-imagen-form">
+                                    <form method="POST" action="../Controller/ActualizarImagenViaje.php" enctype="multipart/form-data">
+                                        <input type="hidden" name="id_viaje" value="<?php echo $viaje['id_viaje']; ?>">
+                                        <label for="imagen_viaje_<?php echo $viaje['id_viaje'];?>">Subir una foto </label>
+                                        <input type="file" name="imagen_viaje" id="imagen_viaje_<?php echo $viaje['id_viaje'];?>" accept="image/*" onchange="this.form.submit()"><br><br>
+                                        <!-- <input type="submit" value="Cambiar imagen"> -->
+                                    </form>
+                                </div>
+                            </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No tienes viajes creados</p>
+            <?php endif; ?>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
 
     <!--BOOTSTRAP JS-->  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

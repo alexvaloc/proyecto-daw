@@ -1,0 +1,19 @@
+/*NAVBAR*/
+/* Cambia los colores del navbar */
+.navbar.bg-body-tertiary {
+    background-color: #376d6f !important; /* Nuevo color de fondo */
+}
+
+.navbar.bg-body-tertiary .navbar-nav .nav-link {
+    color: #ffffff !important; /* Nuevo color del texto */
+}
+
+.navbar.bg-body-tertiary .navbar-nav .nav-link:hover {
+    color: #cccccc !important; /* Nuevo color del texto al pasar el mouse */
+}
+.navbar-brand img{
+    height: 4rem; /*1 rem = 16px*/
+    width: auto;
+    margin: 0;
+    padding: 0;
+}

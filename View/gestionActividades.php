@@ -50,6 +50,7 @@ $totalPrecios = $actividadController->calcularTotalPrecioPorDestinoController($i
     <title>Gestión de actividades - Mytra</title>
 </head>
 <body>
+<?php include './navbar.php'; ?>
 <!-- mensaje de exito o error al crear/editar/eliminar -->
 <?php if (isset($_SESSION['mensaje'])) {
         echo "<p>" . $_SESSION['mensaje'] . "</p>";
