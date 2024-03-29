@@ -44,7 +44,7 @@ require_once __DIR__ . '/../controller/ViajeController.php';
                 <h2 class="lead mt-4 mb-3">Bienvenido  a tu Tablero de Viajes en Mytra</h2>   
             </div>
             <div class="mb-1">
-            <h2 class="display 5 mb-4">Crear un nuevo viaje</h2>
+            <h2 class=" mb-4">Crear un nuevo viaje</h2>
             </div>
             <form method="POST" action="../Controller/CrearViaje.php">
                <div class="mb-1">

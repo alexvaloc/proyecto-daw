@@ -47,7 +47,7 @@ if ($idViaje) {
 <body>
     <?php include './navbar.php'; ?>
 
-    <div class="wrapper" id="destinos">
+    <div class="wrapper" id="destinos" style="background: #ececec;">
     <!--mensaje exito/error-->
     <?php if (isset($_SESSION['mensaje'])): ?>
             <div class="alert alert-info text-center"><?php echo $_SESSION['mensaje']; ?></div>
