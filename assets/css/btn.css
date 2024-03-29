@@ -1,5 +1,8 @@
 
-
+* {
+    font-family: "Poppins", sans-serif;
+    
+}
 /*Estilo de botones*/
 
 body{
@@ -60,3 +63,5 @@ body{
     background-color: #52958b !important; /* Lichen for hover state */
     box-shadow: 3px 3px 7px #004D47 !important; /* Peacock blue for a deeper shadow on hover */
 }
+
+
