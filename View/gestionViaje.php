@@ -44,10 +44,10 @@ if ($idViaje) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Gestión de Viajes - Mytra</title>
 </head>
-<body>
+<body style="background: #ececec;">
     <?php include './navbar.php'; ?>
 
-    <div class="wrapper" id="destinos" style="background: #ececec;">
+    <div class="wrapper" id="destinos" >
     <!--mensaje exito/error-->
     <?php if (isset($_SESSION['mensaje'])): ?>
             <div class="alert alert-info text-center"><?php echo $_SESSION['mensaje']; ?></div>

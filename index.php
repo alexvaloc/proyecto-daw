@@ -100,7 +100,7 @@ if (isset($_GET['cerrarSesion'])) {
             <div class="row ">
                 <div class="col-md-6 side-image">
                     <div class="text">
-                        <p>Únete a la comunidad de viajeros de <i>MYTRA</i></p>
+                        <p class="text-center">Únete a la comunidad de viajeros de <i>MYTRA</i></p>
                     </div>                    
                 </div>
                 <!--Formulario de registro-->

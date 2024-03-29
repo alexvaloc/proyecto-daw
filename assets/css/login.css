@@ -18,15 +18,15 @@
 }
 
 .row{
-    width: 900px;
-    height: 550px;
+    width: 1100px;
+    height: 770px;
     border-radius: 10px;
     background: #fff;
     box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
 }
 
 .side-image{
-    background-image: url("../img/fondo.jpg");
+    background-image: url("../img/fondo4.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -60,7 +60,7 @@ i{
 }
 
 .input-box{
-    max-width: 330px;
+    max-width: 430px;
     width: 100%;
     margin: auto;
     box-sizing: border-box;
@@ -110,7 +110,7 @@ i{
 }
 
 .input-field .input:focus, .input-field .input:valid{
-    border-bottom: 1px solid #004e92;
+    border-bottom: 1px solid #376d6f;
 }
 
 .submit{
@@ -123,7 +123,7 @@ i{
 }
 
 .submit:hover{
-    background: rgba(37,95,156,0.9);
+    background: rgba(37, 99, 75, 0.9);
     color: #fff;
 }
 
@@ -142,7 +142,7 @@ span a {
 
 span a:hover{
     text-decoration: underline;
-    color: #004e92;
+    color: #3e7274;
 }
 
 /*MEDIA QUERY para definir parametros en tamaño movil*/
