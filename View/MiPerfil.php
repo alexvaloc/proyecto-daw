@@ -47,6 +47,8 @@ if (!isset($_SESSION['usuario'])) {
 
         <label for="email" class="form-label">Correo electrónico:</label>
         <input type="email" class="form-control" name="email" value="<?= $_SESSION['email'] ?>" required>
+        <hr>
+        <p class="lead">Cambia tu contraseña:</p>
 
         <label for="contraseña" class="form-label">Nueva Contraseña:</label>
         <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="Ingresa nueva contraseña">

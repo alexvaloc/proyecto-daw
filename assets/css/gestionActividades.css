@@ -7,29 +7,30 @@
 /* Botones dentro de la tabla */
 
 .tabla-actividades .btn-editar:hover, .tabla-actividades .btn-eliminar:hover {
-    opacity: 0.8; /* Efecto al pasar el ratón */
+    opacity: 0.8; 
 }
 
 .input-tablero {
-    background-color: #109e9e; /* Color de fondo */
-    border: 1px solid #0d7979; /* Color del borde */
-    color: white; /* Color del texto */
+    background-color: #109e9e; 
+    border: 1px solid #0d7979; 
+    color: white; 
     text-align: center;
-    padding: 10px 15px; /* Ajusta estos valores para cambiar el tamaño del botón */
-    text-decoration: none; /* Remueve el subrayado del enlace */
-    display: inline-block; /* Permite aplicar paddings y alineación de texto */
-    border-radius: 0.25rem; /* Redondea las esquinas del botón */
-    transition: background-color 0.2s, border-color 0.2s; /* Transición suave para el hover */
+    padding: 10px 15px; 
+    text-decoration: none; 
+    display: inline-block; 
+    border-radius: 0.25rem; 
+    transition: background-color 0.2s, border-color 0.2s; 
   }
   
   .input-tablero:hover, .input-tablero:focus {
-    background-color: #0d7979; /* Color de fondo al pasar el ratón */
-    color: #ffffff; /* Texto blanco para mejorar la legibilidad */
-    text-decoration: none; /* Asegura que no haya subrayado en el texto */
-    outline: none; /* Elimina el contorno que aparece en focus en algunos navegadores */
+    background-color: #0d7979; 
+    color: #ffffff; 
+    text-decoration: none; 
+    outline: none; 
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+/*Información del presupuesto*/
   .total-precios {
     background: #f8f9fa;
     border: 1px solid #dee2e6;

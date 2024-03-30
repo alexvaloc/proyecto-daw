@@ -24,6 +24,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $fechaFin = $_POST['fecha_fin'] ?? "";
     $presupuestoTotal = $_POST['presupuesto_total'] ?? 0;
 
+      
+
      // Crear instancia de la entidad Viaje
      $viaje = new Viaje($nombreViaje, $fechaInicio, $fechaFin, $presupuestoTotal, $id_usuario, $idViaje);
     

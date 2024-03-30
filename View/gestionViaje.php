@@ -53,7 +53,7 @@ if ($idViaje) {
     <div class="wrapper" id="destinos" >
     <!--mensaje exito/error-->
     <?php if (isset($_SESSION['mensaje'])): ?>
-            <div class="alert alert-info text-center"><?php echo $_SESSION['mensaje']; ?></div>
+            <div id="alert-box" class="alert alert-info text-center"><?php echo $_SESSION['mensaje']; ?></div>
             <?php unset($_SESSION['mensaje']); // Elimina el mensaje de la sesión después de mostrarlo ?>
         <?php endif; ?>
 
@@ -255,8 +255,9 @@ if ($idViaje) {
 </div>      
 </div> 
 
-    <!--Enlace con JavaScript-->
+    <!--Enlaces con JavaScript-->
     <script src="../assets/js/gestionViaje.js"></script>
+    <script src="../assets/js/tablero-viajes.js"></script>
     <!--BOOTSTRAP JS-->  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

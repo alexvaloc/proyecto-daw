@@ -57,6 +57,8 @@ class UsuarioController{
         if (!empty($contraseña) || !empty($confirmar_contraseña)) {
             if ($contraseña !== $confirmar_contraseña) {
                 return "Las contraseñas no coinciden.";
+            }else{
+                $contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
             }
         } else {
             // Mantén la contraseña actual si no se proporciona una nueva

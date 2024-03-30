@@ -1,4 +1,4 @@
-/*LOGIN */
+/*Estilos para la página de LOGIN */
 
 * {
     font-family: "Poppins", sans-serif;
@@ -94,7 +94,6 @@ i{
     
     top: 10px;
     left: 10px;
-    /* pointer-events: none; */
     transition: .5s;
 }
 

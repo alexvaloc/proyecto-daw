@@ -80,7 +80,9 @@ require_once __DIR__ . '/../controller/ViajeController.php';
     <div class="col-sm-9 col-md-9 col-lg-10" style="background: #ececec;">
         <!-- Mostrar mensajes de éxito/error -->
         <?php if (isset($_SESSION['mensaje'])): ?>
-            <div class="alert alert-info text-center"><?php echo $_SESSION['mensaje']; ?></div>
+            <div id="alert-box" class="alert alert-info text-center">
+                <?php echo $_SESSION['mensaje']; ?>
+            </div>
             <?php unset($_SESSION['mensaje']); // Elimina el mensaje de la sesión después de mostrarlo ?>
         <?php endif; ?>
 
@@ -105,10 +107,10 @@ require_once __DIR__ . '/../controller/ViajeController.php';
                                 <p><strong>Hasta:</strong> <?php echo $fechaFin; ?></p>
                                 <p><strong>Presupuesto:</strong> <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p> 
                             </div>
-                            <div class="viaje-imagen mt-3 mt-lg-0 w-100 w-lg-50 d-flex flex-column align-items-center align-items-lg-end">
+                            <div class="viaje-imagen mt-3 mt-lg-0 w-100 w-lg-50 d-flex flex-column align-items-center align-items-lg-end justify-content-center justify-content-lg-center">
                                 <!--Si hay una imágen, mostrarla-->
                                 <?php if(!empty($viaje['ruta_imagen'])): ?>
-                                    <img src="../assets/uploads/<?php echo htmlspecialchars($viaje['ruta_imagen']);?>" class="rounded img-fluid float-start" alt="Imagen del viaje">
+                                    <img src="../assets/uploads/<?php echo htmlspecialchars($viaje['ruta_imagen']);?>" class="rounded img-fluid" alt="Imagen del viaje">
                                 <?php endif; ?>
                                 
                                 <!--Formulario para cargar imagen-->
@@ -136,6 +138,7 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 
     <!--BOOTSTRAP JS-->  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <!--Enlace con JavaScript-->
+    <script src="../assets/js/tablero-viajes.js"></script>
 </body>
 </html>
