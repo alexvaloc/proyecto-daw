@@ -45,7 +45,8 @@ class Viaje {
     }
 
     public function getFechaInicio(){
-        return $this->fecha_inicio;
+        $date = DateTime::createFromFormat('Y-m-d', $this->fecha_inicio);
+        return $date ? $date->format('d/m/Y') : null;
     }
 
     public function setFechaInicio($fecha_inicio){
@@ -59,7 +60,8 @@ class Viaje {
     }
 
     public function getFechaFin(){
-        return $this->fecha_fin;
+        $date = DateTime::createFromFormat('Y-m-d', $this->fecha_fin);
+        return $date ? $date->format('d/m/Y') : null;
     }
 
     public function setFechaFin($fecha_fin){

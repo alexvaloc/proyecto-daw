@@ -138,11 +138,13 @@ $totalPrecios = $actividadController->calcularTotalPrecioPorDestinoController($i
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($actividades as $actividad) : ?>
+            <?php foreach ($actividades as $actividad) : 
+                $fechaActividadFormateada = date('d/m/Y', strtotime($actividad['fecha']));    
+            ?>
                 <tr>
                     <td><b><?php echo htmlspecialchars($actividad['nombre_actividad'])?></b></td>
                     <td><?php echo htmlspecialchars($actividad['descripcion'])?></td>
-                    <td><?php echo htmlspecialchars($actividad['fecha'])?></td>
+                    <td><?php echo $fechaActividadFormateada; ?></td>
                     <td><?php echo htmlspecialchars($actividad['duracion'])?></td>
                     <td><?php echo htmlspecialchars($actividad['Precio'])?>€</td>
                     <td>

@@ -16,6 +16,8 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 
     //Obtenemos los viajes del usuario
     $viajes = $viajeController->obtenerViajesPorUsuarioController($idUsuario);
+
+    
  ?>
 
 <!DOCTYPE html>
@@ -85,30 +87,33 @@ require_once __DIR__ . '/../controller/ViajeController.php';
             <h2 class="display-3 ">Mis Viajes</h2>
         </div>
         <!--Fila para las tarjetas de viaje-->
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 g-3">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
             <?php if(!empty($viajes)): ?>
-                <?php foreach ($viajes as $viaje): ?>
+                <?php foreach ($viajes as $viaje): 
+                    $fechaInicio = date('d/m/Y', strtotime($viaje['fecha_inicio']));
+                    $fechaFin = date('d/m/Y', strtotime($viaje['fecha_fin']));
+                
+                ?>
                     <!--Columna individual para cada tarjeta de viaje-->
-                    <div class="container-fluid col-12 col-sm-11 col-md-11 col-lg-6 mb-3 g-3 viaje" >
-                            <div class="viaje-info" onclick="window.location.href='gestionViaje.php?id_viaje=<?php echo $viaje['id_viaje']; ?>';">
-                                <h3><?php echo htmlspecialchars($viaje['nombre_viaje']);?></h3>
-                                <p>Desde: <?php echo htmlspecialchars($viaje['fecha_inicio']); ?></p> 
-                                <p>Hasta: <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
-                                <p>Presupuesto: <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p> 
+                    <div class="container col-12 col-sm-11 col-md-11 col-lg-6 mb-3 g-3 viaje" >
+                            <div class="viaje-info text-center" onclick="window.location.href='gestionViaje.php?id_viaje=<?php echo $viaje['id_viaje']; ?>';">
+                                <h3 class="text-center mb-3"><?php echo htmlspecialchars($viaje['nombre_viaje']);?></h3>
+                                <p><strong>Desde:</strong> <?php echo $fechaInicio ?></p> 
+                                <p><strong>Hasta:</strong> <?php echo $fechaFin; ?></p>
+                                <p><strong>Presupuesto:</strong> <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p> 
                             </div>
                             <div class="viaje-imagen">
                                 <!--Si hay una imágen, mostrarla-->
                                 <?php if(!empty($viaje['ruta_imagen'])): ?>
-                                    <img src="../assets/uploads/<?php echo htmlspecialchars($viaje['ruta_imagen']);?>" class="rounded float-start" alt="Imagen del viaje">
+                                    <img src="../assets/uploads/<?php echo htmlspecialchars($viaje['ruta_imagen']);?>" class="rounded img-fluid float-start" alt="Imagen del viaje">
                                 <?php endif; ?>
                                 
                                 <!--Formulario para cargar imagen-->
                                 <div class="viaje-imagen-form">
                                     <form method="POST" action="../Controller/ActualizarImagenViaje.php" enctype="multipart/form-data">
                                         <input type="hidden" name="id_viaje" value="<?php echo $viaje['id_viaje']; ?>">
-                                        <label for="imagen_viaje_<?php echo $viaje['id_viaje'];?>">Subir una foto </label>
+                                        <label for="imagen_viaje_<?php echo $viaje['id_viaje'];?>">Cargar imágen </label>
                                         <input type="file" name="imagen_viaje" id="imagen_viaje_<?php echo $viaje['id_viaje'];?>" accept="image/*" onchange="this.form.submit()"><br><br>
-                                        <!-- <input type="submit" value="Cambiar imagen"> -->
                                     </form>
                                 </div>
                             </div>

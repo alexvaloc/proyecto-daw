@@ -27,6 +27,9 @@ if ($idViaje) {
     header("Location: ./TableroDeViajes.php");
     exit;
 }
+    //Cambiar formato de las fechas
+    $fechaInicioViaje = date('d/m/Y', strtotime($viaje['fecha_inicio']));
+    $fechaFinViaje = date('d/m/Y', strtotime($viaje['fecha_fin']));
 
 ?>
 
@@ -85,8 +88,8 @@ if ($idViaje) {
                     <h2>Información del viaje</h2>
                 </div>
                 <div class="card-body">
-                    <p><strong>Fecha de Inicio:</strong> <?php echo htmlspecialchars($viaje['fecha_inicio']); ?></p>
-                    <p><strong>Fecha de Fin:</strong> <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
+                    <p><strong>Fecha de Inicio:</strong> <?php echo $fechaInicioViaje; ?></p>
+                    <p><strong>Fecha de Fin:</strong> <?php echo $fechaFinViaje; ?></p>
                     <p><strong>Presupuesto Total:</strong> <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p>
                 </div>
             </div>
@@ -171,7 +174,10 @@ if ($idViaje) {
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
     <!--Tarjetas de destinos-->
     <?php if (!empty($destinos)): ?>
-        <?php foreach ($destinos as $destino): ?>
+        <?php foreach ($destinos as $destino): 
+            $fechaInicioDestino = date('d/m/Y', strtotime($destino['fecha_inicio']));
+            $fechaFinDestino = date('d/m/Y', strtotime($destino['fecha_fin']));        
+        ?>
             <div class="col">
                 <div class="card h-100 custom-card destinos-container">
                   <div class="card-body destino-card">        
@@ -180,8 +186,8 @@ if ($idViaje) {
                         </div>
                         <div class="card-content">
                             <div class="card-text fecha-info">
-                            <p class="card-text">Desde: <?= htmlspecialchars($destino['fecha_inicio'])?></p>
-                            <p class="card-text">Hasta: <?= htmlspecialchars($destino['fecha_fin'])?></p>
+                            <p class="card-text">Desde: <?= htmlspecialchars($fechaInicioDestino)?></p>
+                            <p class="card-text">Hasta: <?= htmlspecialchars($fechaFinDestino)?></p>
                             </div>
                             <div class="card-footer destino-card-buttons">
                                 <!--Botón editar destino, pasamos a través del boton todos los parámetros del destino-->
