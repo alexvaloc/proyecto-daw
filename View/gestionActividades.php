@@ -26,6 +26,8 @@ if ($idDestino) {
     // print_r($actividades);
     // echo '</pre>';
 
+    $fechaInicioDestino = date('d/m/Y', strtotime($destino['fecha_inicio']));
+    $fechaFinDestino = date('d/m/Y', strtotime($destino['fecha_fin']));
    
 } else {
     $_SESSION['mensaje'] = "No se ha especificado el destino.";
@@ -71,8 +73,8 @@ $totalPrecios = $actividadController->calcularTotalPrecioPorDestinoController($i
                 <h2 class="display-5">Información de <?php echo htmlspecialchars($destino['nombre_destino']); ?></h2>
                 </div>
                 <div class="card-body">
-                <strong>Fecha de Inicio:</strong> <?php echo htmlspecialchars($destino['fecha_inicio']); ?>
-                <strong>Fecha de Fin:</strong> <?php echo htmlspecialchars($destino['fecha_fin']); ?></p>
+                <span><strong>Fecha de Inicio:</strong> <?php echo $fechaInicioDestino; ?></span>
+                <span><strong>   Fecha de Fin:</strong> <?php echo $fechaFinDestino ?></span>
                 </div>
             </div>
         </div>

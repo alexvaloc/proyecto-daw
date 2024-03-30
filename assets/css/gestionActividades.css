@@ -27,7 +27,8 @@
     color: #ffffff; /* Texto blanco para mejorar la legibilidad */
     text-decoration: none; /* Asegura que no haya subrayado en el texto */
     outline: none; /* Elimina el contorno que aparece en focus en algunos navegadores */
-  }
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
 
   .total-precios {
     background: #f8f9fa;
