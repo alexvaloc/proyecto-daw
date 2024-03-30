@@ -41,7 +41,7 @@ require_once __DIR__ . '/../controller/ViajeController.php';
 <div class="container-fluid">
     <div class="row">
         <!-- Sidebar - Formulario para crear un nuevo viaje -->
-        <div class="col-sm-3 col-md-3 col-lg-2 ml-4 sidebar">
+        <div class="col-sm-3 col-md-3 col-lg-2 g-5 mt-0 sidebar">
             <div class="text-center mt-2 mb-4">
                 <h2 class="lead mt-4 mb-3">Bienvenido  a tu Tablero de Viajes en Mytra</h2>   
             </div>
@@ -69,7 +69,9 @@ require_once __DIR__ . '/../controller/ViajeController.php';
                     <input class="form-control" type="number" name="presupuesto_total" id="presupuesto_total" step="0.01" required><br><br>
                 </div>
 
-                <input class="btn btn-primary crear_viaje mb-4" type="submit" name="crear_viaje" value="Crear Viaje">
+                <div class="text-center">
+                    <input class="btn btn-primary crear_viaje mb-4" type="submit" name="crear_viaje" value="Crear Viaje">
+                </div>
             </form>
         </div>
 
@@ -83,11 +85,11 @@ require_once __DIR__ . '/../controller/ViajeController.php';
         <?php endif; ?>
 
        
-        <div class="text-center mb-4">
-            <h2 class="display-3 ">Mis Viajes</h2>
+        <div class="text-center mb-0 mt-2">
+            <h2 class="display-4 ">Mis Viajes</h2>
         </div>
         <!--Fila para las tarjetas de viaje-->
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 ml-3 g-3">
             <?php if(!empty($viajes)): ?>
                 <?php foreach ($viajes as $viaje): 
                     $fechaInicio = date('d/m/Y', strtotime($viaje['fecha_inicio']));
@@ -95,21 +97,22 @@ require_once __DIR__ . '/../controller/ViajeController.php';
                 
                 ?>
                     <!--Columna individual para cada tarjeta de viaje-->
-                    <div class="container col-12 col-sm-11 col-md-11 col-lg-6 mb-3 g-3 viaje" >
-                            <div class="viaje-info text-center" onclick="window.location.href='gestionViaje.php?id_viaje=<?php echo $viaje['id_viaje']; ?>';">
+                    <div class="col-12 col-sm-11 col-md-11 col-lg-6 mb-0 g-4 mt-4 ml-3 viaje" >
+                        <div class="card text-center d-flex flex-column flex-lg-row">
+                            <div class="viaje-info text-center w-100 w-lg-50" onclick="window.location.href='gestionViaje.php?id_viaje=<?php echo $viaje['id_viaje']; ?>';">
                                 <h3 class="text-center mb-3"><?php echo htmlspecialchars($viaje['nombre_viaje']);?></h3>
                                 <p><strong>Desde:</strong> <?php echo $fechaInicio ?></p> 
                                 <p><strong>Hasta:</strong> <?php echo $fechaFin; ?></p>
                                 <p><strong>Presupuesto:</strong> <?php echo htmlspecialchars($viaje['presupuesto_total']); ?>€</p> 
                             </div>
-                            <div class="viaje-imagen">
+                            <div class="viaje-imagen mt-3 mt-lg-0 w-100 w-lg-50 d-flex flex-column align-items-center align-items-lg-end">
                                 <!--Si hay una imágen, mostrarla-->
                                 <?php if(!empty($viaje['ruta_imagen'])): ?>
                                     <img src="../assets/uploads/<?php echo htmlspecialchars($viaje['ruta_imagen']);?>" class="rounded img-fluid float-start" alt="Imagen del viaje">
                                 <?php endif; ?>
                                 
                                 <!--Formulario para cargar imagen-->
-                                <div class="viaje-imagen-form">
+                                <div class="viaje-imagen-form d-flex flex-column align-items-center justify-content-center w-100 w-lg-50 mt-3 mt-lg-0">
                                     <form method="POST" action="../Controller/ActualizarImagenViaje.php" enctype="multipart/form-data">
                                         <input type="hidden" name="id_viaje" value="<?php echo $viaje['id_viaje']; ?>">
                                         <label for="imagen_viaje_<?php echo $viaje['id_viaje'];?>">Cargar imágen </label>
@@ -117,6 +120,7 @@ require_once __DIR__ . '/../controller/ViajeController.php';
                                     </form>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>

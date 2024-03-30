@@ -21,7 +21,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Espacio entre tarjetas */
-    background-color: #16b3a623 !important;
+    background-color: #16b3a615 !important;
 }
 
 .titulo-card{
@@ -43,79 +43,43 @@
 .card {
     background-color: #f0f0f0;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 4px #0d635a96 !important;
     cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 10px;
     margin-bottom: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(37, 36, 36, 0.2);
 }
 
 
+/* Estilo para las tarjetas de viaje */
 
-/* Estilo para la tarjeta de viaje */
-.img-container, .img-viaje-contaier{
-    border: 2px solid black;
-}
-
-.crear_viaje{
-        border: none;
-        outline: none;
-        height: 45px;
-        background: #ececec;
-        border-radius: 5px;
-        transition: 0.4s;
-}
-
-.crear_viaje:hover{
-        background: rgba(37,95,156,0.9);
-        color: #fff;
-}
-
-
-
-.viaje {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-right: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;   
-    box-shadow: 0 4px 8px rgba(37, 36, 36, 0.2);
-    width: 70%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
 .viaje:hover {
     transform: translateY(-5px);
     
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
 }
 
 /* Estilo para la información del viaje */
-.viaje-info {
-    width: 60%;
-    cursor: pointer;
+
+.viaje .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
+
 
 /* Estilo para la imagen del viaje */
 .viaje-imagen img {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: right;
     border-radius: 8px;
-    max-width: 250px; /* Ajusta esto según necesites */
-    max-height: 250px; /* Ajusta esto según necesites */
+    width: 250px !important;
+    height: 166px !important;
     border-radius: 8px;
     margin-bottom: 10px;
 }
@@ -162,6 +126,23 @@
     border-color: #0d7979; /* Borde más oscuro para dar efecto de botón presionado */
     outline: none; /* Elimina el contorno que aparece en focus en algunos navegadores */
     text-decoration: none; /* Asegura que no haya subrayado en el texto */
+    box-shadow: 3px 3px 7px #0d635a96;
+}
+
+/*Barra lateral*/
+
+.crear_viaje{
+    border: none;
+    outline: none;
+    height: 45px;
+    background: #ececec;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+.crear_viaje:hover{
+    background: rgba(37,95,156,0.9);
+    color: #fff;
 }
 
 .sidebar{
@@ -175,6 +156,7 @@
 
 /**** media querys ****/ 
 
+/*BARRA LATERAL*/
 /*Pantallas grandes*/
 @media (min-width:576px) {
     .sidebar{
@@ -189,7 +171,28 @@
         
     }
     .row {
-        margin-right: 0; /* Ajusta según sea necesario */
-        margin-left: 0; /* Ajusta según sea necesario */
+        margin-right: 0;
+        margin-left: 0; 
       }
+}
+
+/*TARJETAS DE VIAJE*/
+
+@media (min-width:992px) {
+
+    .viaje .card{
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .viaje-info, .viaje-imagen{
+        flex:1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .viaje-imagen {
+        align-items: flex-end;
+        padding-right: 20px;
+    }
 }
