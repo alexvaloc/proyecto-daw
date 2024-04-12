@@ -1,14 +1,18 @@
 <?php
 
+//Dependencias
 require_once __DIR__ . '/Conexion.php';
 
+//Clase ActividadModel
 class ActividadModel {
     private $db;
 
+    //Constructor de ActividadModel
     public function __construct() {
         $this->db = crearConexion();
     }
 
+    //Funcion para crear Actividad 
     public function crearActividadModel(Actividad $actividad) {
 
         //Definimos la consulta
@@ -27,6 +31,7 @@ class ActividadModel {
         $actividad->getPrecio(), 
         $actividad->getIdDestino());
 
+        //Ejecutamos la consulta y cerramos la conexión.
         if($stmt->execute()){
             $stmt->close();
             return true;
@@ -36,6 +41,7 @@ class ActividadModel {
         }
     }
 
+    //Funcion para potener las actividades de un destino
     public function obtenerActividadesPorDestinoModel($idDestino) {
         //Definimos la consulta
         $sql = "SELECT * FROM Actividades WHERE id_destino = ?";
@@ -62,6 +68,7 @@ class ActividadModel {
         }
     }
 
+    //Función para obtener la actividad dependiendo de su ID
     public function obtenerActividadPorIdModel($idActividad) {
         $sql = "SELECT * FROM Actividades WHERE id_actividad = ?";
 
@@ -81,6 +88,7 @@ class ActividadModel {
         }
     }
 
+    //Función para actualizar(editar) una actividad
     public function actualizarActividadModel(Actividad $actividad) {
         //Definimos la consulta SQL
         $sql = "UPDATE Actividades SET nombre_actividad = ?, descripcion = ?, fecha = ?, duracion = ?, precio = ? 
@@ -89,7 +97,7 @@ class ActividadModel {
             $stmt = $this->db->prepare($sql);
 
         if(!$stmt){
-            return false; // O manejar el error específico
+            return false; 
         }
 
         // Asignamos el valor del objeto a las variables
@@ -117,10 +125,11 @@ class ActividadModel {
             return true;
         } else {
             $stmt->close();
-            return false; // O manejar el error específico
+            return false; 
         }
     }
 
+    //Función para eliminar una actividad
     public function eliminarActividadModel($idDestino, $idActividad) {
         //Definimos la consulta
         $sql = "DELETE FROM Actividades WHERE id_actividad = ? AND id_destino = ?";
@@ -135,6 +144,7 @@ class ActividadModel {
         }
     }
 
+    //Función para calcular el presupuesto de actividades de un destino
     public function calcularTotalPrecioPorDestinoModel($idDestino){
         //Sentencia SQL para calcular el precio total de las actividades
     $sql = "SELECT SUM(Precio) AS total_precios FROM actividades WHERE id_destino = $idDestino";

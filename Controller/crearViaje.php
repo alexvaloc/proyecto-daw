@@ -14,6 +14,7 @@ session_start();
         $usuario = $_SESSION['usuario'];
     }
 
+//Recojemos los datos del formulario y creamos el objeto viaje
 if($_SERVER['REQUEST_METHOD'] ==='POST'){
 
     try{
