@@ -1,6 +1,6 @@
 <?php
 
-//Definimos esta dirección como directorio raiz
+//Definimos esta dirección como directorio raiz del proyecto
 define('ROOT_DIR', __DIR__);
 
 //Dependencias
@@ -65,8 +65,8 @@ if (isset($_GET['cerrarSesion'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Fuente Popins-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!--CSS de LOGIN-->
     <link rel="stylesheet" href="./assets/css/login.css">
     <!--BOOTSTRAP CSS-->
@@ -76,10 +76,10 @@ if (isset($_GET['cerrarSesion'])) {
     <title>Registro de Usuario</title>
 </head>
 <body>
-       
+    <!--Contenedor principal-->
      <div class="wrapper">
 
-    <!--Script Mensajes éxito/error-->
+    <!--Script para mostrar mensajes éxito/error-->
     <?php if(isset($mensajeRegistro)):?>
         <div id="mensaje-registro" class="alert alert-success" role="alert">
             <?php echo $mensajeRegistro; ?>
@@ -95,7 +95,7 @@ if (isset($_GET['cerrarSesion'])) {
             <?php echo htmlspecialchars(($_GET['mensaje'])); ?>
         </div>
     <?php endif; ?>
-
+        <!--Estrctura del Login-->
         <div class="container main">
             <div class="row ">
                 <div class="col-md-6 side-image">
@@ -109,8 +109,6 @@ if (isset($_GET['cerrarSesion'])) {
                         <form method="POST" action="index.php">
                             <div class="header-logo">
                                 <header class="header-title">CREAR UNA CUENTA</header>
-                                <!--Imagen-->
-                                <!-- <img class="logo" src="./assets/img/logo.png" alt="Imagen de viaje"> -->
                             </div>
                                 <div class="input-field">
                                 <label for="nombre">Nombre:</label>

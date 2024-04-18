@@ -4,6 +4,7 @@
 
 class Actividad{
 
+    //Variables privadas de clase
     private $id_actividad;
     private $nombre_actividad;
     private $descrpicion;
@@ -12,6 +13,7 @@ class Actividad{
     private $precio;
     private $id_destino;
 
+    //Constructor de la clase
     public function __construct($nombre_actividad= '',$descripcion = '',$fecha = '0000-00-00' , $duracion = '', $precio = 0, $id_actividad = null,$id_destino = null){
         
         $this->id_actividad = $id_actividad;

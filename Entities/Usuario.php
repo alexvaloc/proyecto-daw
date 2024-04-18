@@ -2,6 +2,8 @@
 
 //Creamos la clase para crear objetos Usuario
 class Usuario {
+
+    //Variables privadas de clase
     private $id_usuario;
     private $nombre;
     private $email;

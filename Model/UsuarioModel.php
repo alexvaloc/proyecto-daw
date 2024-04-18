@@ -1,10 +1,10 @@
 <?php
-
+//Dependencias
 require_once __DIR__ . '/Conexion.php';
 
 //Clase UsuarioModel
 class UsuarioModel{
-    
+    //Variavles
     private $db;
 
     //creamos la conexión 
@@ -18,8 +18,9 @@ class UsuarioModel{
         $email = $usuario->getEmail();
         //Encriptamos la contraseña
         $contraseña = password_hash($usuario->getContraseña(), PASSWORD_DEFAULT);
-
+        //Sentencia SQL
         $sql = "INSERT INTO Usuarios (nombre, email, contraseña) VALUES (?, ?, ?)";
+            //Preparamos la sentencia
             $stmt = mysqli_prepare($this->db, $sql);
             if (false === $stmt) {
                 // Error al preparar la sentencia
@@ -90,16 +91,18 @@ class UsuarioModel{
         return $usuario; //Devuelve todos los datos del usuario
     }
 
+    //Función para actualizar los datos del usuario
     Public function actualizarUsuarioModel ($id_usuario, $nombre, $email, $contraseña){
         
+        //Si la contraseña no es un campo vacio
         if($contraseña !== null){ 
-
+            //Sentencia SQL para actualizar contraseña
             $sql =  "UPDATE Usuarios SET nombre = ?, email = ?, contraseña = ? WHERE id_usuario= ?";
             $stmt =mysqli_prepare($this->db, $sql);
             mysqli_stmt_bind_param($stmt, "sssi", $nombre, $email, $contraseña, $id_usuario);
 
         }else{
-
+            //Sentencia SQL para actualizar nombre y email
             $sql = "UPDATE Usuarios SET nombre = ?, email = ? WHERE id_usuario = ?";
             $stmt =mysqli_prepare($this->db, $sql);
             mysqli_stmt_bind_param($stmt, "ssi", $nombre, $email, $id_usuario);
@@ -107,7 +110,8 @@ class UsuarioModel{
 
         $resultado = mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
-
+        
+        //Mensaje de éxito/error
         return $resultado ? "Actualización exitosa." : "Error al actualizar el perfil.";
     }
 }

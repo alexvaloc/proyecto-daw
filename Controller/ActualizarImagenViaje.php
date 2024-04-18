@@ -29,16 +29,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['imagen_viaje'])){
     $nombreImagen = uniqid('viaje_'.$idViaje . '_') . basename($imagenViaje['name']);
     $rutaArchivo = $directorioDestino . $nombreImagen;
 
-    // if (!is_dir($directorioDestino)) {
-    //     die("El directorio de destino no existe: $directorioDestino");
-    // }
-    
-    // if (!is_writable($directorioDestino)) {
-    //     die("El directorio de destino no es escribible: $directorioDestino");
-    // }
-
-    // echo $rutaArchivo;
-    // exit;
 
     //Trasladamos la imagen al directorio destino
     //$_FILE['tmp_name'] -> Es la dirección temporal del archivo

@@ -67,7 +67,7 @@ class UsuarioController{
 
         // Llama al modelo para actualizar los datos del usuario, incluida la nueva contraseña si se proporciona
         $resultado = $this->usuarioModel->actualizarUsuarioModel($id_usuario, $nombre, $email, $contraseña);
-
+        //Devuelve true o mensaje de error
         return $resultado ? true : "Error al actualizar el perfil.";
     }
  }

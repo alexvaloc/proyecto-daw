@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if($resultado){
             $_SESSION['mensaje'] = "Destino añadido con éxito.";
         }else{
-            $_SESSION['mensaje'] = "Error al añádir el destino";
+            $_SESSION['mensaje'] = "Error al añadir el destino";
         }
 
     //Redirigimos al usuario de vuelta a gestiónViaje

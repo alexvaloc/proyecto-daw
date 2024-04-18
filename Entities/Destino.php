@@ -2,6 +2,8 @@
 
 //Clase Destino
 class Destino {
+
+    //Variables privadas de clase
     private $id_destino;
     private $nombre_destino;
     private $fecha_inicio;
@@ -9,6 +11,7 @@ class Destino {
     private $id_viaje;
     private $actividades = []; //Array para almacenar objetos Actividad relacionados con el destino
 
+    //Constructor
     public function __construct($nombre_destino= '',$fecha_inicio = '0000-00-00',$fecha_fin  = '0000-00-00' , $id_viaje = null,$id_destino = null){
         
         $this->id_destino = $id_destino;
@@ -31,6 +34,7 @@ class Destino {
         return $this->nombre_destino;;
     }
 
+    //Restricción, no se puede crear destino sin nombre
     public function setNombreDestino($nombre_destino){
         if(empty($nombre_destino)){
             throw new Exception("El nombre del destino no puede estar vacío");
@@ -42,6 +46,7 @@ class Destino {
         return $this->fecha_inicio;
     }
 
+    //Manejo de fechas 
     public function setFechaInicio($fecha_inicio){
          //Validación del formato de la fecha
          $date = DateTime::createFromFormat('Y-m-d', $fecha_inicio);

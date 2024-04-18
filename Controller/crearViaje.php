@@ -1,12 +1,12 @@
 <?php
-
+//Dependencias
 require_once __DIR__ . '/../entities/Viaje.php';
 require_once __DIR__ . '/../model/ViajeModel.php';
 require_once __DIR__ . '/../controller/ViajeController.php';
 
 // Verificar la sesión del usuario
 session_start();
-
+//si no se ha iniciado sesión, redirigir al index.php
     if (!isset($_SESSION['usuario'])) {
         header("Location: ../index.php");
         exit;
@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 
     header("Location: ../View/TableroDeViajes.php");
     exit;
-}catch(Exception $e){
+}catch(Exception $e){ //Manejo de excepcion 
     $_SESSION['mensaje'] = $e->getMessage();
     header("Location: " . $_SERVER['HTTP_REFERER']); //Esto redirige al usuario a la página anterior
 }

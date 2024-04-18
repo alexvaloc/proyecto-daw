@@ -3,6 +3,8 @@
 //Clase para crear objetos viaje
 
 class Viaje {
+
+    //Variables privadas de clase
     private $id_viaje;
     private $nombre_viaje;
     private $fecha_inicio;
@@ -11,6 +13,8 @@ class Viaje {
     private $id_usuario;
     private $destinos = []; //Array para recolectar los diferentes destinos que pueden estar asociados a Viaje
     private $rutaImagen;
+
+    //Constructor de la clase
     public function __construct($nombre_viaje= '',$fecha_inicio = '0000-00-00',$fecha_fin  = '0000-00-00' ,$presupuesto_total = 0,$id_usuario = null, $id_viaje = null, $rutaImagen= ''){
         
         $this->id_viaje = $id_viaje;
