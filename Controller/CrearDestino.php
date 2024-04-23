@@ -3,15 +3,14 @@
 require_once __DIR__ . '/../Controller/DestinoController.php';
 require_once __DIR__ . '/../Entities/Destino.php';
 
+//Iniciamos sesión
 session_start();
-
 if(!isset($_SESSION['usuario'])){
     header("Location: ../index.php");
     exit;
 }
 
 //Verificamos que el formulario ha sido enviado
-
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     try{
     //Recogemos los valores del formulario
@@ -32,7 +31,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $destinoController = new DestinoController();
 
     //Llamamos al método para crear el destino
-
         $resultado = $destinoController->crearDestinoController($destino);
 
     //Mensajes basados en el resultado del método

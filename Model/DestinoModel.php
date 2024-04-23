@@ -27,6 +27,7 @@ class DestinoModel{
         $fechaFin = $destino->getFechaFin();
         $idViaje = $destino->getIdViaje();
 
+        //Asociamos las variables a la sentencia SQL
         $stmt->bind_param("sssi",
             $nombreDestino,
             $fechaInicio,
